@@ -1,0 +1,63 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+.primary {
+  background-color: #616161;
+  color: #fff;
+}
+
+.primary-light {
+  background-color: #8e8e8e;
+  color: #fff;
+}
+
+.primary-dark {
+  background-color: #373737;
+  color: #fff;
+}
+
+.secondary {
+  background-color: #607d8b;
+  color: #000;
+}
+
+.secondary-light {
+  background-color: #8eacbb;
+  color: #000;
+}
+
+.secondary-dark {
+  background-color: #34515e;
+  color: #fff;
+}
+
+.shadow-0 {
+  box-shadow: none;
+  transition: box-shadow 0.25s linear;
+}
+
+.shadow-1 {
+  box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.45), -2px 3px 5px rgba(100, 100, 100, 0.55);
+  transition: box-shadow 0.25s linear;
+}
+
+.shadow-2 {
+  box-shadow: 6px 6px 8px rgba(100, 100, 100, 0.45), -5px 6px 7px rgba(100, 100, 100, 0.55);
+  transition: box-shadow 0.25s linear;
+}
+
+.shadow-3 {
+  box-shadow: 8px 8px 11px rgba(100, 100, 100, 0.45), -7px 8px 10px rgba(100, 100, 100, 0.55);
+  transition: box-shadow 0.25s linear;
+}
+
+.shadow-4 {
+  box-shadow: 10px 10px 13px rgba(100, 100, 100, 0.45), -9px 10px 12px rgba(100, 100, 100, 0.55);
+  transition: box-shadow 0.25s linear;
+}
+
+.shadow-5 {
+  box-shadow: 13px 13px 17px rgba(100, 100, 100, 0.45), -12px 13px 16px rgba(100, 100, 100, 0.55);
+  transition: box-shadow 0.25s linear;
+}

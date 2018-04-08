@@ -1,15 +1,18 @@
-import { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-import Page from './../fragments/Page.jsx';
+import { Grid, GridCell } from 'rmwc/Grid';
+import Page from './../components/Page';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
-    <Page title="Dave's Bistro">
-      <h1>Welcome to Dave's Bistro!</h1>
-    </Page>
+    return(
+      <Page title="Dave's Bistro">
+        <Grid tag="main">
+          <GridCell desktop={4} tablet={6} phone={12}><h1>Welcome to Dave's Bistro!</h1></GridCell>
+        </Grid>
+      </Page>
+    );
   }
 }
+
+export default Home;

@@ -1,13 +1,8 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
-import Page from './../fragments/Page.jsx';
+import Page from './../components/Page';
 
 class Error404 extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
-  
   render() {
     return(
       <Page title="Page Not Found - Error 404">
@@ -17,3 +12,5 @@ class Error404 extends Component {
     );
   }
 }
+
+export default Error404;

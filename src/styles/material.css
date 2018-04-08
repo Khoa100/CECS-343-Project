@@ -1,63 +1,57 @@
-html {
-  font-family: 'Roboto', sans-serif;
+body {
+  margin: 0;
+  --mdc-theme-primary: #212121;
+  --mdc-theme-secondary: #64dd17;
+  --mdc-theme-background: #fff;
+  --mdc-theme-text-primary-on-primary: white;
+  --mdc-theme-text-secondary-on-primary: rgba(255, 255, 255, 0.7);
+  --mdc-theme-text-hint-on-primary: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-disabled-on-primary: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-icon-on-primary: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-primary-on-secondary: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-secondary: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-secondary: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-secondary: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-secondary: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-dark: white;
+  --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
+  --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
 }
 
-.primary {
-  background-color: #616161;
-  color: #fff;
+a {
+  text-decoration: none;
 }
 
-.primary-light {
-  background-color: #8e8e8e;
-  color: #fff;
+a.nav {
+  color: var(--mdc-theme-text-primary-on-background);
 }
 
-.primary-dark {
-  background-color: #373737;
-  color: #fff;
+main {
+  max-width: 1312px;
+  width: 95%;
+  margin: auto;
 }
 
-.secondary {
-  background-color: #607d8b;
-  color: #000;
+@media (min-width: 480px) and (max-width: 839px) {
+  main {
+    width: 85%;
+  }
 }
 
-.secondary-light {
-  background-color: #8eacbb;
-  color: #000;
-}
-
-.secondary-dark {
-  background-color: #34515e;
-  color: #fff;
-}
-
-.shadow-0 {
-  box-shadow: none;
-  transition: box-shadow 0.25s linear;
-}
-
-.shadow-1 {
-  box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.45), -2px 3px 5px rgba(100, 100, 100, 0.55);
-  transition: box-shadow 0.25s linear;
-}
-
-.shadow-2 {
-  box-shadow: 6px 6px 8px rgba(100, 100, 100, 0.45), -5px 6px 7px rgba(100, 100, 100, 0.55);
-  transition: box-shadow 0.25s linear;
-}
-
-.shadow-3 {
-  box-shadow: 8px 8px 11px rgba(100, 100, 100, 0.45), -7px 8px 10px rgba(100, 100, 100, 0.55);
-  transition: box-shadow 0.25s linear;
-}
-
-.shadow-4 {
-  box-shadow: 10px 10px 13px rgba(100, 100, 100, 0.45), -9px 10px 12px rgba(100, 100, 100, 0.55);
-  transition: box-shadow 0.25s linear;
-}
-
-.shadow-5 {
-  box-shadow: 13px 13px 17px rgba(100, 100, 100, 0.45), -12px 13px 16px rgba(100, 100, 100, 0.55);
-  transition: box-shadow 0.25s linear;
+@media (min-width: 839px) {
+  main {
+    width: 75%;
+  }
 }

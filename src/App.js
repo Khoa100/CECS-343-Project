@@ -1,26 +1,42 @@
-import { Component, Fragment } from 'react';
-import { BrowserRouter as Router } from 'react-router';
-import { createStore } from 'redux';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-import Routes from './routes.jsx';
+import SiteHeader from './fragments/SiteHeader';
 
-import './styles/common.css';
-import './styles/responsive.css';
-import './styles/material.css';
+import { Home, SignIn, Error404 } from './pages';
+
+import rootReducer from './scripts/reducers';
 
 class App extends Component {
   constructor(props) {
     super(props);
     
-    //TODO: Cerate Redux Store
+    this.state = {
+      store: createStore(
+        rootReducer,
+        applyMiddleware(thunk)
+      )
+    };
   }
   
   render() {
     return (
       <Router>
-        <Provider>
-          <Routes />
+        <Provider store={this.state.store}>
+          <Route render={({ location }) => (
+            <Fragment>
+              <SiteHeader/>
+              <Switch>
+                <Route exact path="/sign-in" component={ SignIn }/>
+                <Route path="/" component={ Home }/>
+                <Route component={ Error404 }/>
+              </Switch>
+              {/* SiteFooter ? */}
+            </Fragment>
+          )}/>
         </Provider>
       </Router>
     );

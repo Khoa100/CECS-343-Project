@@ -1,1 +1,3 @@
-export { Secure } from './Secure.jsx';
+import Secure from './Secure.jsx';
+
+export default Secure;

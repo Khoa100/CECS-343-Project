@@ -1,17 +1,12 @@
-import { Component, Fragment } from 'react';
-import { Redirect } from 'react-router';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 class SecureComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
     if (this.props.authenticated) {
       return(
         <Fragment>
-          {this.props.secure}
+          {this.props.secure ? this.props.secure : this.props.children}
         </Fragment>
       );
     } else {
@@ -31,6 +26,6 @@ const Secure = connect(
       authenticated: false
     };
   }
-)(MetaSecureContent);
+)(SecureComponent);
 
 export default Secure;

@@ -1,26 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<title>Dave's Bistro - Locations</title>
 	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
+.location {
+	display: flex;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+	width: 1000px;
+	height: 350px;
+	text-align: left;
+}
 </style>
 </head>
 <body>
-	<!-- remember to update these links...-->
-	<div class="topnav">
-		<div class="right">
-			<a href="homepage.html">Home</a>
+
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
+	</div>
+	
+	<div id="topnav">
+			<a href="index.html">Home</a>
 			<a href="about.html">About Us</a>
 			<a href="menu.html">Menu</a>
 			<a class="active" href="locations.html">Locations</a>
-			<a href="loginpage.jtm">Login</a>
+			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
+	</div>
+
+	<div class="content">
+	<img src="locations_header.jpg" alt="Locations">
+		<div class="location">
+			<img src="davesbistro_losangeles.jpg" alt="Dave's Bistro - Los Angeles" style="height: 300px; width: 500px; float:left; margin-right: 30px;">
+			<br>Los Angeles</br>
+			<br>Phone: (310) 123-4567</br>
+			<br>Address: 343 Sunset Blvd. Los Angeles, CA 90210</br>
+		</div>
+		<div class="location">
+			<img src="davesbistro_texas.jpg" alt="Dave's Bistro - San Antonio" style="height: 300px; width: 500px; float:left; margin-right: 30px;">
+			<br>San Antonio</br>
+			<br>Phone: (210) 777-7777</br>
+			<br>Address: 81 Cowboy Rd. San Antonio, TX 78234</br>
 		</div>
 	</div>
 	
-	<div style="padding-left:16px; margin-top:75px;height:1500px;" >
-		<h2><i>Locations...</i></h2>
-		<p><img src= "343photo.jpg" alt= "dave's bistro" width="350"></p>
-	</div>	
+	<footer>
+		<div class="footer">
+			<a href="#">Don't look at this.</a>
+		</div>
+	</footer>
+	
+<script>
+	window.onscroll = function() {myFunction()};
+	
+	var navbar = document.getElementById("topnav");
+	var sticky = topnav.offsetTop;
+	
+	var navbar = document.getElementById("topnav");
+	var sticky = navbar.offsetTop;
+	
+	function myFunction() {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+			navbar.classList.remove("sticky");
+		}
+	}
+</script>
+
 </body>
 
 </html>

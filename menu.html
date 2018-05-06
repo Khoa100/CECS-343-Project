@@ -1,26 +1,320 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<title>Dave's Bistro - Menu</title>
 	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
+
+.menu-grid {
+	max-width: 1000px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-gap: 15px; 
+	min-height: 0;
+	min-width: 0;
+	padding-top: 15px;
+	justify-self: center;
+	justify-content: center;
+}
+
+.menu-grid>div {
+	position: relative;
+	background-color: #f1f1f1;
+	text-align: center;
+	font-size: 30px;
+	overflow: hidden;
+	min-width: 0;
+	z-index:1;
+}
+
+div.caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	background-color: #f1f1f1;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 10px;
+}
+
+.food img {
+	  opacity: 1;
+	  display: block;
+	  width: 100%;
+	  height: auto;
+	  transition: .5s ease;
+	  backface-visibility: hidden;
+	  height: 300px;
+	  width: 300px;
+}
+
+div.middle {
+	  transition: .5s ease;
+	  opacity: 0;
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -60%);
+	  -ms-transform: translate(-50%, -50%);
+	  text-align: center;
+	  font-style: italic;
+}
+
+.menu-grid>div:hover .middle {
+	opacity: 1;
+}
+
+.text {
+	background-color: #f1f1f1;
+	opacity: 0.85;
+	color: black;
+	font-size: 16px;
+	padding: 16px 32px;
+}
+
 </style>
 </head>
 <body>
-	<!-- remember to update these links...-->
-	<div class="topnav">
-		<div class="right">
-			<a href="homepage.html">Home</a>
+
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
+	</div>
+	
+	<div id="topnav">
+		<a href="index.html">Home</a>
 			<a href="about.html">About Us</a>
 			<a class="active" href="menu.html">Menu</a>
 			<a href="locations.html">Locations</a>
-			<a href="loginpage.jtm">Login</a>
+			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
+	</div>
+	<div class="content">
+		<img src="menu_header.jpg" alt="Menu">
+		
+		<h1>Entrées</h1>
+		
+		<div class="menu-grid">
+		
+			<div>
+				<img src="food_lbburger.jpg" alt="LB House Special Burger" class="food">
+				<div class="middle">
+					<div class="text">Charcoal roasted beef braised in our house special bourbon sauce.</div>
+				</div>
+				<div class="caption">
+					LB House Special Burger
+				</div>
+			</div>
+
+			<div>
+				<img src="food_fish.jpg" alt="Fish in Lemon Butter Sauce" class="food">
+				
+				<div class="middle">
+					<div class="text">Tender baked fish fillet served with our seasonal lemon butter sauce.</div>
+				</div>
+				<div class="caption">
+					Fish in Lemon Butter Sauce
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_dish.jpg" alt="Salmon on Crispy Rice" class="food">
+				<div class="middle">
+					<div class="text">Grilled salmon served on a bed of crispy rice.</div>
+				</div>
+				<div class="caption">
+					Salmon on Crispy Rice
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_mushroomchicken.jpg" alt="Chicken Marsala" class="food">
+				<div class="middle">
+					<div class="text">Golden brown chicken and mushrooms paired with an Italian wine crafted Marsala sauce.</div>
+				</div>
+				<div class="caption">
+					Chicken Marsala
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_spaghetti.jpg" alt="Spaghetti" class="food">
+				<div class="middle">
+					<div class="text">A classic pasta dish topped with savory tomato sauce and ground beef.</div>
+				</div>
+				<div class="caption">
+					Spaghetti
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_lasagna.jpg" alt="Summer Lasagna" class="food">
+				<div class="middle">
+					<div class="text">Baked with juicy tomatoes, corn, zucchini, and bell peppers, and topped with cashew ricotta and fresh basil.</div>
+				</div>
+				<div class="caption">
+					Summer Lasagna
+				</div>
+			</div>
+			
+		</div>
+		
+		<h1>Side dishes</h1>
+		
+		<div class="menu-grid">
+			<div>
+				<img src="food_salad2.jpg" alt="California Classic Salad" class="food">
+				<div class="middle">
+					<div class="text">Baby greens, chickpeas, and pepitas tossed together with hard boiled eggs and sliced avocados.</div>
+				</div>
+				<div class="caption">
+					California Classic Salad
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_salad1.jpg" alt="Clam Salad" class="food">
+				<div class="middle">
+					<div class="text">Clams tossed with various greens and drizzled with vinaigrette.</div>
+				</div>
+				<div class="caption">
+					Clam Salad
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_mozzsticks.jpg" alt="Mozzarella Sticks" class="food">
+				<div class="middle">
+					<div class="text">Baked mozzarella sticks served with your sauce of choice.</div>
+				</div>
+				<div class="caption">
+					Mozzarella Sticks
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_eggmuffin.jpg" alt="Egg Muffins" class="food">
+				<div class="middle">
+					<div class="text">Breakfast favorites loaded with peppers, spinach, and veggies. Served with a side of fruit.</div>
+				</div>
+				<div class="caption">
+					Egg Muffins
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_clamchowder.jpg" alt="Clam Chowder" class="food">
+				<div class="middle">
+					<div class="text">A hearty soup flavored with bacon, leeks, onions, and potatoes.</div>
+				</div>
+				<div class="caption">
+					Clam Chowder
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_friedshrimp.jpg" alt="Fried Shrimp" class="food">
+				<div class="middle">
+					<div class="text">Shrimp coated in crunchy fried batter.</div>
+				</div>
+				<div class="caption">
+					Fried Shrimp
+				</div>
+			</div>
+			
+		</div>
+		
+		<h1 id="desserts">Desserts & Drinks</h1>
+		
+		<div class="menu-grid">
+		
+			<div>
+				<img src="food_chocovolcano.jpg" alt="Chocolate Volcano" class="food">
+				<div class="middle">
+					<div class="text">Chocolate lava cake sprinkled with powdered sugar.</div>
+				</div>
+				<div class="caption">
+					Chocolate Lava Cake
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_vanillaisland.jpg" alt="Vanilla Island Cake" class="food">
+				<div class="middle">
+					<div class="text">Vanilla sponge cake with cream filling topped with chocolate shavings.</div>
+				</div>
+				<div class="caption">
+					Vanilla Island Cake
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_creampuff.jpg" alt="Cream Puffs" class="food">
+				<div class="middle">
+					<div class="text">Small yet delicious pastries packed with cream and served with strawberries.</div>
+				</div>
+				<div class="caption">
+					Cream Puffs
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_blueberrymilkshake.jpg" alt="Blueberry Milkshake" class="food">
+				<div class="middle">
+					<div class="text">Blueberry milkshake topped with vanilla ice cream, maple syrup, and muffin crumbs.</div>
+				</div>
+				<div class="caption">
+					Blueberry Milkshake
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_smoothie.jpg" alt="Tropical Smoothie" class="food">
+				<div class="middle">
+					<div class="text">A tasty and nutritious blend of chilled strawberries, pineapple, and kiwi.</div>
+				</div>
+				<div class="caption">
+					Tropical Smoothie
+				</div>
+			</div>
+			
+			<div>
+				<img src="food_rasplemonade.jpg" alt="Raspberry Lemonade" class="food">
+				<div class="middle">
+					<div class="text">Our signature naturally sweetened raspberry lemonade.</div>
+				</div>
+				<div class="caption">
+					Raspberry Lemonade
+				</div>
+			</div>
+			
 		</div>
 	</div>
+
+	<footer>
+		<div class="footer">
+			<a href="#">Don't look at this.</a>
+		</div>
+	</footer>
 	
-	<div style="padding-left:16px; margin-top:75px;height:1500px;" >
-		<h2><i>Menu...</i></h2>
-		<p><img src= "343photo.jpg" alt= "dave's bistro" width="350"></p>
-	</div>	
+<script>
+	window.onscroll = function() {myFunction()};
+	
+	var navbar = document.getElementById("topnav");
+	var sticky = navbar.offsetTop;
+	
+	function myFunction() {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+			navbar.classList.remove("sticky");
+		}
+	}
+</script>
+	
 </body>
 
 </html>

@@ -2,18 +2,18 @@
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Dave's Bistro - New Reservation</title>
+	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style>
 
-body {
-	font-family: Calibri, Helvetica, sans-serif;	
-}
-
 form {
-	border: 3px solid #f1f1f1;
-	border-radius: 10px;
-	width: 30%;
+	width: 500px;
+	height: 500px;
     top:0;
     bottom: 0;
     left: 0;
@@ -24,22 +24,24 @@ form {
 .formcontainer {
 	display: block;
     padding: 20px;
-	width: 40%;
+	width: 400px;
     margin: auto;
 }
 
 button {
-    background-color: #8FBE64;
+    background-color: #333;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 200px;
+	transition: .2s ease;
 }
 
 button:hover {
-    opacity: 0.9;
+    background-color: #a4e26a;
+	color: black;
 }
 
 label {
@@ -53,30 +55,50 @@ label {
 </head>
 
 <body>
-<h1 align="center">New Reservation</h1>
-
-<form action="/action_page.php">
-	<div class="formcontainer">
-			<label for="location"><b>Location</b></label>
-			<select name="location">
-				<option disabled selected>Select your location</option>
-				<option value="losangeles">Los Angeles</option>
-				<option value="texas">Texas</option>
-			</select>
-			<br><br>
-			
-			<label for="date"><b>Date</b></label>
-			<input type="date" placeholder="Enter Date" name ="date" required><br><br>
-			
-			<label for="time"><b>Time</b></label>
-			<input type="time" placeholder="Enter Time" name ="time" required><br><br>
-			
-			<label for="guests"><b>Number of Guests</b></label>
-			<input type="number" name="guests" min="1" max="20"><br><br>
-			
-			<button type="submit">Payment Info</button>
+	
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
 	</div>
-</form>
+	
+	<div id="topnav">
+		<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="menu.html">Menu</a>
+			<a href="locations.html">Locations</a>
+			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
+	</div>
+
+	<div class="content">
+	<h1 align="center">New Reservation</h1>
+		<form action="/action_page.php">
+			<div class="formcontainer">
+					<label for="location"><b>Location</b></label>
+					<select name="location">
+						<option disabled selected>Select your location</option>
+						<option value="losangeles">Los Angeles</option>
+						<option value="texas">Texas</option>
+					</select>
+					<br><br>
+					
+					<label for="date"><b>Date</b></label>
+					<input type="date" placeholder="Enter Date" name ="date" required><br><br>
+					
+					<label for="time"><b>Time</b></label>
+					<input type="time" placeholder="Enter Time" name ="time" required><br><br>
+					
+					<label for="guests"><b>Number of Guests</b></label>
+					<input type="number" name="guests" min="1" max="20"><br><br>
+					
+					<button type="submit">Payment Info</button>
+			</div>
+		</form>
+	</div>
+	
+	<footer>
+		<div class="footer">
+			<a href="#">Don't look at this.</a>
+		</div>
+	</footer>
 
 </body>
 

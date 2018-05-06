@@ -1,26 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<title>Dave's Bistro - About Us</title>
 	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
+.bio {
+	margin: auto;
+	width: 600px;
+	padding: 0px 20px 10px;
+}
 </style>
 </head>
 <body>
-	<!-- remember to update these links...-->
-	<div class="topnav">
-		<div class="right">
-			<a href="homepage.html">Home</a>
+	
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
+	</div>
+	
+	<div id="topnav">
+			<a href="index.html">Home</a>
 			<a class="active" href="about.html">About Us</a>
 			<a href="menu.html">Menu</a>
 			<a href="locations.html">Locations</a>
-			<a href="loginpage.jtm">Login</a>
-		</div>
+			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
 	</div>
 	
-	<div style="padding-left:16px; margin-top:75px;height:1500px;" >
-		<h2><i>About us...</i></h2>
-		<p><img src= "343photo.jpg" alt= "dave's bistro" width="350"></p>
-	</div>	
+	<div class="content">
+		<img src="dave.jpg" alt="Dave">
+		<div class="bio">
+			<h1><i>It all started with a wish...</i></h1>
+			
+			<p>A wish to serve the best food with top-notch quality to hungry people. While growing up, Dave cooked his family meals once a week as part of his chores and developed a love for cooking.
+			<p>In his leisure, he experimented with different ingredients and created his own personal dish. He called it “The LB Special House Burger”, with LB standing for Lovely Beef.
+			<p>Rumors of Dave’s new specialty dish spread quickly throughout his neighborhood. People would personally ask Dave to cook it for them and even offered to pay him.
+			<p>Dave realized that this was a sign… that this was just the beginning of achieving a dream. The dream: open his own restaurant where people can eat to their heart’s content and leave feeling satisfied.
+			<p>With the support of his family and friends, Dave graduated high school and went on to culinary school. There he created more of his signature dishes like the Chicken Marsala and made connections with people who also supported his dream. Finally, at the age of 27, Dave graduated from culinary school and started his business at Los Angeles.
+			<p>Today, Dave’s Bistro is located in two cities: Los Angeles, CA, and San Antonio, TX. Despite only having two locations, the popularity is increasing ten-fold. Tourists from all over the country line up to dine at what people are saying “one of the best dining spots ever”. 
+			<p>Because of the employees who help create this extravagant dining experience and the guests who experience it, Dave’s dream will always live on.
+		</div>
+	</div>		
+
+	<footer>
+		<div class="footer">
+			<a href="#">Don't look at this.</a>
+		</div>
+	</footer>
+	
+<script>
+	window.onscroll = function() {myFunction()};
+	
+	var navbar = document.getElementById("topnav");
+	var sticky = navbar.offsetTop;
+	
+	function myFunction() {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+			navbar.classList.remove("sticky");
+		}
+	}
+</script>
+
 </body>
 
 </html>

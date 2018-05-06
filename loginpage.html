@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<title>Dave's Bistro - Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
 
-body {
-	font-family: Calibri, Helvetica, sans-serif;	
-}
-
 form {
-	border: 3px solid #f1f1f1;
-	border-radius: 10px;
+	background-color: #f1f1f1;
 	width: 40%;
     top:0;
     bottom: 0;
@@ -20,27 +19,12 @@ form {
     margin: auto;
 }
 
-img.logo {
-	max-width: 100%;
-	width: 100%;
-    height: auto;
-	padding: 10px;
-	margin-left: auto;
-    margin-right: auto;
-	border-radius: 50%;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 0px;
-}
-
 .formcontainer {
 	text-align: center;
     padding: 20px;
 }
 
-.footer {
+.loginfooter {
     padding: 10px;
 }
 
@@ -70,10 +54,11 @@ label {
   display: inline-block;
 }
 
-
+span.register {
+	float: left;
+}
 span.forget {
     float: right;
-    padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -92,31 +77,65 @@ span.forget {
 
 <body>
 
-<h1 align="center">Login Form</h1>
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
+	</div>
 
-<form action="/action_page.php">
-	<div class="imgcontainer">
-		<img src="dave_avatar.png" alt="Dave's Bistro" class="logo" style="width:300px;height:300px;"/>
+	<div id="topnav">
+		<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="menu.html">Menu</a>
+			<a href="locations.html">Locations</a>
+			<a class="active" href="loginpage.html" style="text-align:right; float:right;">Login</a>
 	</div>
 	
-	<div class="formcontainer">
-		<label for="email"><b>Email</b></label>
-		<input type="text" placeholder="Enter email" name="email" required><br><br>
-
-		<label for="psw"><b>Password</b></label>
-		<input type="password" placeholder="Enter Password" name="psw" required><br><br>
-
-		<button type="submit">Login</button><br>
+	<div class="content">
+	<form action="/action_page.php">
+		<div class="imgcontainer">
+			<img src="dave_avatar.png" alt="Dave's Bistro" class="logo" style="width:300px;height:300px;"/>
+		</div>
 		
-		<input type="checkbox" checked="checked" name="remember"> Remember me<br>		
-	</div>
+		<div class="formcontainer">
+			<label for="email"><b>Email</b></label>
+			<input type="text" placeholder="Enter email" name="email" required><br><br>
+
+			<label for="psw"><b>Password</b></label>
+			<input type="password" placeholder="Enter Password" name="psw" required><br><br>
+
+			<button type="submit">Login</button><br>
+			
+			<input type="checkbox" checked="checked" name="remember"> Remember me<br>	
+			<br>
+			<div class="loginfooter" style="background-color:#f1f1f1">
+				<span class="register">New? <a href="register.html">Register here </a></span>
+				<span class="forget">Forgot <a href="recoverAccount.html">password?</a></span>
+			</div>
+		</div>
+		
+	</form>
 	
-	<div class="footer" style="background-color:#f1f1f1">
-		<a href="makeAccount.html"> Register </a>
-		<span class="forget">Forgot <a href="#">password?</a></span>
 	</div>
+
+	<footer>
+		<div class="footer">
+			<a href="#">Don't look at this.</a>
+		</div>
+	</footer>
+
+<script>
+	window.onscroll = function() {myFunction()};
 	
-</form>
+	var navbar = document.getElementById("topnav");
+	var sticky = navbar.offsetTop;
+	
+	function myFunction() {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+			navbar.classList.remove("sticky");
+		}
+	}
+</script>
 	
 </body>
 </html>

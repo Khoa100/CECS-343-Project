@@ -1,18 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-class If extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
-    if (this.props.c) {
-      return(
-        <Fragment>
-          {this.props.children}
-        </Fragment>
-      );
-    }
+const If = (props) => {
+  if (props.c) {
+    return(
+      <Fragment>
+        {props.children}
+      </Fragment>
+    );
+  } else {
+    return null;
   }
 }
 

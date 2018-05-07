@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 
-import { Reducer as user } from './user';
 import { Reducer as reservation } from './reservations';
+import { Reducer as createAccount } from './createAccount';
+import { Reducer as tempReservation } from './tempReservation';
+import { Reducer as aws } from './aws';
 
 export default combineReducers({
-  user,
-  reservation
+  reservation,
+  createAccount,
+  tempReservation,
+  aws
 });

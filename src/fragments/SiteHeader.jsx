@@ -11,7 +11,7 @@ import { ListItem, ListItemText } from 'rmwc/List';
 import Secure from './../components/Secure';
 
 // Other imports
-import { signOut } from './../scripts/actions';
+import { Actions } from './../scripts/aws';
 
 const WrapDrawerLink = (props) => {
   return(
@@ -58,10 +58,21 @@ class SiteHeader extends Component {
             <ToolbarSection alignEnd>
               <Secure 
                 secure={
-                  <Button onClick={() => {this.props.dispatch(signOut())}}>Sign Out</Button>
+                  <Button
+                    theme="text-primary-on-primary"
+                    className="mdc-ripple-surface--accent"
+                    onClick={() => {this.props.dispatch(Actions.signout())}}>
+                    Sign Out
+                  </Button>
                 }
                 unsecure={
-                  <Link to="/sign-in"><Button theme="text-primary-on-primary" className="mdc-ripple-surface--accent">Sign In</Button></Link>
+                  <Link to="/auth">
+                    <Button
+                      theme="text-primary-on-primary"
+                      className="mdc-ripple-surface--accent">
+                      Sign In
+                    </Button>
+                  </Link>
                 }/>
             </ToolbarSection>
           </ToolbarRow>
@@ -77,8 +88,12 @@ class SiteHeader extends Component {
           <Secure
             secure={
               <DrawerContent>
-                <WrapDrawerLink to="/users/" onClick={this.closeDrawer} text="Home"/>
-                <WrapDrawerButton onClick={() => {this.props.dispatch(signOut())}} text="Sign Out"/>
+                <WrapDrawerLink to="/user/" onClick={this.closeDrawer} text="Home"/>
+                <WrapDrawerLink to="/user/create" onClick={this.closeDrawer} text="New Reservation"/>
+                <WrapDrawerLink to="/user/reservations/" onClick={this.closeDrawer} text="Reservations"/>
+                <WrapDrawerLink to="/user/history" onClick={this.closeDrawer} text="Past Reservations"/>
+                <WrapDrawerLink to="/user/prefs" onClick={this.closeDrawer} text="Account Preferences"/>
+                <WrapDrawerButton onClick={() => {this.closeDrawer(); this.props.dispatch(Actions.signout())}} text="Sign Out"/>
               </DrawerContent>
             }
             unsecure={
@@ -86,7 +101,7 @@ class SiteHeader extends Component {
                 <WrapDrawerLink to="/#top" onClick={this.closeDrawer} text="Home"/>
                 <WrapDrawerLink to="/#about" onClick={this.closeDrawer} text="About"/>
                 <WrapDrawerLink to="/#reviews" onClick={this.closeDrawer} text="Reviews"/>
-                <WrapDrawerLink to="/sign-in" onClick={this.closeDrawer} text="Sign In"/>
+                <WrapDrawerLink to="/auth/" onClick={this.closeDrawer} text="Sign In"/>
               </DrawerContent>
             }/>
         </Drawer>

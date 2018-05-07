@@ -1,0 +1,9 @@
+
+.parallax {
+  width: 100%;
+  height: 50vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

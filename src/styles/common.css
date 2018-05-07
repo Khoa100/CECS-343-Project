@@ -1,22 +1,24 @@
 
+.page {
+  opacity: 1.0;
+  transform: translateY(0);
+  transition: opacity 1ms linear;
+}
+
+.page-exit {
+  opacity: 0.01;
+  transform: translateY(25px);
+  transition: opacity 200ms ease-in, transform 150ms ease-in 50ms;
+}
+
+.page-enter-init {
+  opacity: 0.01;
+  transform: translateY(25px);
+  transition: opacity 1ms linear;
+}
+
 .page-enter {
-  opacity: 0.01;
-  transform: translatey(100px), scale(0.9, 0.9);
-}
-
-.page-enter.example-enter-active {
   opacity: 1;
-  transform: translatey(0), scale(1, 1);
-  transition: opacity 300ms ease-in, translatey 250ms ease-in 50ms, scale 250ms ease-in 50ms;
-}
-
-.page-leave {
-  opacity: 1;
-  transform: translatey(0), scale(1, 1);
-}
-
-.page-leave.example-leave-active {
-  opacity: 0.01;
-  transform: translatey(100px), scale(0.9, 0.9);
-  transition: opacity 300ms ease-in, translatey 250ms ease-in 50ms, scale 250ms ease-in 50ms;
+  transform: translateY(0);
+  transition: opacity 200ms ease-in, transform 150ms ease-in 50ms;
 }

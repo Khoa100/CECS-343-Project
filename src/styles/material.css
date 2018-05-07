@@ -38,7 +38,8 @@ a.nav {
   color: var(--mdc-theme-text-primary-on-background);
 }
 
-main {
+main,
+section {
   max-width: 1312px;
   width: 95%;
   margin: auto;
@@ -54,4 +55,23 @@ main {
   main {
     width: 75%;
   }
+}
+
+.mdc-form-field {
+  box-sizing: border-box;
+}
+
+.mdc-form-field input[type="date"],
+.mdc-form-field input[type="time"],
+.mdc-form-field input[type="number"] {
+  padding: 19px 0 8px 0;
+  font-family: Roboto, sans-serif;
+  color: var(--mdc-theme-text-primary-on-light,rgba(0,0,0,.87));
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,.5);
+}
+
+:focus {
+  outline-offset: 0;
+  outline: none;
 }

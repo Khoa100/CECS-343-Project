@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+import AWS from './../../scripts/aws';
+
 class SecureComponent extends Component {
   render() {
     if (this.props.authenticated) {
@@ -23,7 +25,7 @@ class SecureComponent extends Component {
 const Secure = connect(
   (state, ownProps) => {
     return {
-      authenticated: false
+      authenticated: state.aws.state === AWS.STATE_AUTHED
     };
   }
 )(SecureComponent);

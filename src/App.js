@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import SiteHeader from './fragments/SiteHeader';
 
-import { Home, SignIn, Error404 } from './pages';
+import Routes from './pages';
 
 import rootReducer from './scripts/reducers';
+import { Actions as AWS } from './scripts/aws';
 
 class App extends Component {
   constructor(props) {
@@ -22,21 +23,19 @@ class App extends Component {
     };
   }
   
+  componentDidMount() {
+    this.state.store.dispatch(AWS.init());
+  }
+  
   render() {
     return (
       <Router>
         <Provider store={this.state.store}>
-          <Route render={({ location }) => (
-            <Fragment>
-              <SiteHeader/>
-              <Switch>
-                <Route exact path="/sign-in" component={ SignIn }/>
-                <Route path="/" component={ Home }/>
-                <Route component={ Error404 }/>
-              </Switch>
-              {/* SiteFooter ? */}
-            </Fragment>
-          )}/>
+          <Fragment>
+            <SiteHeader/>
+            <Routes />
+            {/* SiteFooter ? */}
+          </Fragment>
         </Provider>
       </Router>
     );

@@ -1,53 +1,63 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="davestyle.css">
-<style>
 
-.reserve {
-    background-color: #8FBE64;
-	color: white;
-	font-size: 18px;
-    width: 300px;
-    padding: 50px;
-    margin: 25px;
-}
+	<meta charset="utf-8">    
+	<title>Dave's Bistro - Confirm Reservation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<style>
 
 </style>
 </head>
 
 <body>
-	<div class="topnav">
-			<div class="right">
-				<a href="index.html">Home</a>
-				<a href="about.html">About Us</a>
-				<a href="menu.html">Menu</a>
-				<a href="locations.html">Locations</a>
-				<!-- new reservation, view reservations, reservation history, and preferences should be somewhere else-->
-				<a href="loginpage.html">Login</a>
-			</div>
+
+	<div class="header">
+		<h1><i>DAVE'S BISTRO</i></h1>
 	</div>
 
+	<div id="topnav">
+		<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="menu.html">Menu</a>
+			<a href="locations.html">Locations</a>
+			<a class="active" href="loginpage.html" style="text-align:right; float:right;">Login</a>
+			<a href="newReservation.html" style="text-align:right; float:right;">New Reservation</a>
+			<a href="viewReserv.html" style="text-align:right; float:right;">View My Reservations</a>
+			<a href="updateAccount.html" style="text-align:right; float:right;">Account Preferences</a>
+	</div>
+
+	<div class="content">
 	<div style="padding:25px 175px; margin-top:30px; text-align:center; font-size:20px;">
-		<h1><div style="font-style: italic;">Dave's Bistro</h1>
 		<h2>Confirm Reservation</h2>
 	</div>
-	
-	<div class="reserve">
-		<p>Your reservation details are below:</p>
-		<br>
-		<p>Name: John Doe</p>
-		<p>Number of people in party: 4</p>
-		<p>Date: January 20, 2001</p>
-		<p>Time: 7:00 p.m.</p>
-		<br>
+		<div class="confirm">
+			<p>Your reservation details are below:</p>
+			<br>
+			<p>Name: John Doe</p>
+			<p>Number of people in party: 4</p>
+			<p>Date: January 20, 2001</p>
+			<p>Time: 7:00 p.m.</p>
+			<br>
+			<p>Confirm reservation?</p>
+			<form>
+			<input type="button" value="Confirm" onclick="window.location.href='reservationConfirmed.html'"/>
+			<input type="button" value="Back" onclick="window.location.href='newReservation.html'"/>
+			</form>
+		</div>
+
 	</div>
-
-	<p>Confirm reservation?</p>
-	<form>
-	<input type="button" value="Confirm" onclick="window.location.href='reservationConfirmed.html'"/>
-	<input type="button" value="Back" onclick="window.location.href='newReservation.html'"/>
-	</form>
-
-</html>
+	
+	<footer>
+		<div class="footer">
+			<a href="#">Privacy</a> &middot; 
+			<a href="#">Terms</a>
+		</div>
+	</footer>
 </body>
+</html>

@@ -1,13 +1,25 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en"> 
+<head>   
 	<meta charset="utf-8">    
-	<title>Dave's Bistro - Account Home</title>
+	<title>Dave's Bistro - Reservation History</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="davestyle.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+.confirm {
+	color: black;
+	font-size: 18px;
+	text-align: center;
+    width: 500px;
+    padding: 50px;
+    margin: auto;
+}
+</style>
 </head>
+
 <body>
 	<div class="header">
 		<h1><i>DAVE'S BISTRO</i></h1>
@@ -21,12 +33,18 @@
 			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
 			<a href="newReservation.html" style="text-align:right; float:right;">New Reservation</a>
 			<a href="viewReserv.html" style="text-align:right; float:right;">View My Reservations</a>
-			<a href="updateAccount.html" style="text-align:right; float:right;">Account Preferences</a>
+			<a class="active" href="updateAccount.html" style="text-align:right; float:right;">Account Preferences</a>
 	</div>
-
-	<div>
-		<img src= "davesbistro_texas.jpg" alt= "dave's bistro" width="100%" height="93%">
+	
+	<div class="content">
+		<div class="confirm">
+			Current Reservations
+			<br>You'll be able to view and delete current reservations.</br>
+			<img src="food_rasplemonade.jpg" alt="Raspberry Lemonade" class="food">
+			*siiiip*
+		</div>
 	</div>
+	
 	<footer>
 		<div class="footer">
 			<a href="#">Privacy</a> &middot; 
@@ -52,4 +70,5 @@
 	}
 </script>
 </body>
+
 </html>

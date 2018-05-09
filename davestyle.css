@@ -25,10 +25,12 @@ body {
 }
 
 #topnav {
-  overflow: hidden;
+  overflow: visible;
   background-color: #333;
   width: 100%;
-  z-index:2;
+  z-index: 5;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 #topnav a {

@@ -7,6 +7,7 @@
 	<title>Dave's Bistro - Account Information</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="davestyle.css">
+	<link rel="stylesheet" type="text/css" href="dropdown.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -23,10 +24,16 @@
 			<a href="about.html">About Us</a>
 			<a href="menu.html">Menu</a>
 			<a href="locations.html">Locations</a>
-			<a href="loginpage.html" style="text-align:right; float:right;">Login</a>
-			<a href="newReservation.html" style="text-align:right; float:right;">New Reservation</a>
-			<a href="viewReserv.html" style="text-align:right; float:right;">View My Reservations</a>
-			<a class="active" href="updateAccount.html" style="text-align:right; float:right;">Account Preferences</a>
+			<div class="dropdown">
+				<button class="dropbtn">Hi, Your Name</button>
+				<div class="dropdown-content">
+					<a href="accountHome.html">Account Home</a>
+					<a href="newReservation.html">New Reservation</a>					
+					<a href="viewReserv.html">View Reservations</a>
+					<a href="updateAccount.html">Settings</a>
+					<a href="logout.html">Logout</a>
+				</div>
+			</div>
 	</div>
 
 <div class="content">

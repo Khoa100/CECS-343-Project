@@ -80,8 +80,11 @@ label {
 
 	<div class="content">
 	<h1 align="center">New Reservation</h1>
-		<form action="/action_page.php">
+		<form action="confirmReservation.html" method="get">
 			<div class="formcontainer">
+					<label for="ownerName"><b>Owner</b></label>
+					<input type="text" placeholder="Enter your name" name ="owner" required><br><br>
+					
 					<label for="location"><b>Location</b></label>
 					<select name="location">
 						<option disabled selected>Select your location</option>
@@ -99,7 +102,7 @@ label {
 					<label for="guests"><b>Number of Guests</b></label>
 					<input type="number" name="guests" min="1" max="20"><br><br>
 					
-					<button type="submit">Payment Info</button>
+					<button type="submit">Make Reservation</button>
 			</div>
 		</form>
 	</div>

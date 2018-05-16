@@ -1,7 +1,8 @@
+import { Auth } from 'aws-amplify';
+
 import { Actions as CreateAccount } from './createAccount';
 
 const Constants = {
-  STATE_INIT: "AWS_INIT",       // initializing
   STATE_SIGNUP: "AWS_SIGNUP",   // creating account
   STATE_SIGNUP_ERROR: "AWS_SIGNUP_ERROR", // error creating account
   STATE_SIGNUP_WAIT_CODE: "AWS_SIGNUP_CODE", // awaiting
@@ -16,24 +17,18 @@ const Constants = {
 
 const Actions = {};
 
-var AWS;
-var _provider;
-var _storage;
-var _username;
-var _password;
+Actions.READY = "AWS_READY";
+const ready = () => {
+  return {
+    type: Actions.READY
+  };
+}
 
 Actions.BEGIN_AUTH = "AWS_BEGIN_AUTH";
 const beginAuth = (username) => {
   return {
     type: Actions.BEGIN_AUTH,
     username: username
-  };
-};
-
-Actions.READY = "AWS_READY";
-const ready = () => {
-  return {
-    type: Actions.READY
   };
 };
 
@@ -72,18 +67,14 @@ Actions.verifyCode = (code, username) => {
   return (dispatch) => {
     dispatch(onVerifying());
     
-    let params = {
-      ClientId: "4efjjmcjfc8ee0qrlrnhl9d0r6",
-      ConfirmationCode: code,
-      Username: username
-    };
-    _provider.confirmSignUp(params, (err, data) => {
-      if (err) {
-        dispatch(onVerifyError(err));
-        
-      } else {
-        dispatch(Actions.signin(_username, _password));
-      }
+    Auth.confirmSignUp(username, code).then((data) => {
+      console.log(data);
+      // sign in
+      dispatch(ready());
+      
+    }).catch((err) => {
+      console.log(err);
+      dispatch(onVerifyError(err));
     });
   }
 }
@@ -97,11 +88,11 @@ const signupError = (e) => {
 };
 
 Actions.ON_SIGNIN = "AWS_ON_SIGNIN";
-const onSignin = (access, expires, id) => {
+const onSignin = (access, refresh, id) => {
   return {
     type: Actions.ON_SIGNIN,
     access: access,
-    expires: expires,
+    refresh: refresh,
     id: id
   };
 };
@@ -115,8 +106,12 @@ const onSignout = () => {
 
 Actions.signout = () => {
   return (dispatch) => {
-    _deleteToken();
-    dispatch(onSignout());
+    Auth.signOut().then((data) => {
+      dispatch(onSignout());
+      
+    }).catch((err) => {
+      dispatch(error(err));
+    });
   }
 };
 
@@ -140,147 +135,54 @@ Actions.signin = (username, password) => {
   return (dispatch) => {
     dispatch(CreateAccount.clear());
     dispatch(beginAuth(username));
+    console.log(`signing in as ${username}`);
     
-    let params = {
-      AuthFlow: "USER_PASSWORD_AUTH",
-      ClientId: "4efjjmcjfc8ee0qrlrnhl9d0r6",
-      AuthParameters: {
-        "USERNAME": username,
-        "PASSWORD": password
-      }
-    };
-    _provider.initiateAuth(params, (err, data) => {
-      if (err) {
-        dispatch(authError(err));
-        
-      } else {
-        _saveToken(data.AuthenticationResult.RefreshToken);
-        dispatch(onSignin(
-          data.AuthenticationResult.AccessToken,
-          data.AuthenticationResult.ExpiresIn,
-          data.AuthenticationResult.IdToken));
-      }
+    Auth.signIn(username, password).then((data) => {
+      let session = Auth.currentSession();
+      dispatch(onSignin(session.accessToken, session.refreshToken, session.idToken));
+      
+    }).catch((err) => {
+      dispatch(authError(err));
     });
   };
 };
 
-const refreshSignin = (token) => {
+Actions.signup = (username, password, name, family_name, email, phone_number, location, subscribe) => {
   return (dispatch) => {
-    dispatch(beginAuth());
+    dispatch(beginSignup(username, password));
     
-    let params = {
-      AuthFlow: "REFRESH_TOKEN_AUTH",
-      ClientId: "4efjjmcjfc8ee0qrlrnhl9d0r6",
-      AuthParameters: {
-        "REFRESH_TOKEN": token
+    Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email, phone_number, name, family_name
       }
-    };
-    _provider.initiateAuth(params, (err, data) => {
-      if (err) {
-        dispatch(authError(err));
-        
-      } else {
-        dispatch(onSignin(
-          data.AuthenticationResult.AccessToken,
-          data.AuthenticationResult.ExpiresIn,
-          data.AuthenticationResultIdToken));
-      }
+    }).then((data) => {
+      dispatch(waitCode());
+      
+    }).catch((err) => {
+      console.error(err);
+      dispatch(signupError(err));
     });
   };
 };
 
-Actions.signup = (user, pass, first, last, email, phone, location, subscribe) => {
-  return (dispatch) => {
-    dispatch(beginSignup(user, pass));
-    
-    let params = {
-      ClientId: "4efjjmcjfc8ee0qrlrnhl9d0r6",
-      Username: user,
-      Password: pass,
-      UserAttributes: [
-        {
-          Name: "email",
-          Value: email
-        },
-        {
-          Name: "name",
-          Value: first
-        },
-        {
-          Name: "family_name",
-          Value: last
-        },
-        {
-          Name: "phone_number",
-          Value: phone
-        }/*,
-        {
-          Name: "preffered_location",
-          Value: `${location}`
-        }*/
-      ]
-    };
-    _provider.signUp(params, (err, data) => {
-      if (err) {
-        console.error(err);
-        dispatch(signupError(err));
-        
-      } else {
-        dispatch(waitCode());
-      }
-    });
-  };
-};
-
-Actions.init = () => {
-  return (dispatch) => {
-    AWS = window.AWS;
-    
-    AWS.config.region = "us-east-2";
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: "us-east-2:4f5f038d-5e55-4197-9be2-3cf97deefae3"
-    });
-    
-    _provider = new AWS.CognitoIdentityServiceProvider();
-    
-    _storage = window.localStorage;
-    if (_storage) {
-      let refreshToken = _storage.getItem("_AWS_REFRESH_TOKEN_");
-      if (refreshToken) {
-        dispatch(refreshSignin(refreshToken));
-      }
-    } else {
-      dispatch(ready());
-    }
-  };
-};
-
-const _saveToken = (refreshToken) => {
-  if (_storage) {
-    _storage.setItem("_AWS_REFRESH_TOKEN_", refreshToken);
-  }
-};
-
-const _deleteToken = () => {
-  if (_storage) {
-    _storage.removeItem("_AWS_REFRESH_TOKEN_");
-  }
-};
-
-const Reducer = (state = { state: Constants.STATE_INIT}, action = { type: "NULL" }) => {
+const Reducer = (state = { state: Constants.STATE_READY}, action = { type: "NULL" }) => {
   switch (action.type) {
+    case Actions.READY :
+      return Object.assign({}, state, {
+        state: Constants.STATE_READY
+      });
     case Actions.BEGIN_AUTH :
       return Object.assign({}, state, {
         state: Constants.STATE_AUTHING,
         username: action.username
       });
     case Actions.ON_SIGNIN :
-      _username = null;
-      _password = null;
       return Object.assign({}, state, {
         state: Constants.STATE_AUTHED,
         access: action.access,
-        expires: action.expires,
+        refresh: action.refresh,
         id: action.id,
         username: null,
         password: null
@@ -293,8 +195,6 @@ const Reducer = (state = { state: Constants.STATE_INIT}, action = { type: "NULL"
         id: null
       });
     case Actions.BEGIN_SIGNUP :
-      _username = action.username;
-      _password = action.password;
       return Object.assign({}, state, {
         state: Constants.STATE_SIGNUP,
         username: action.username
@@ -305,7 +205,7 @@ const Reducer = (state = { state: Constants.STATE_INIT}, action = { type: "NULL"
       });
     case Actions.VERIFY_CODE :
       return Object.assign({}, state, {
-        type: Constants.STATE_SIGNUP_VERIFY
+        state: Constants.STATE_SIGNUP_VERIFY
       });
     case Actions.VERIFY_ERROR :
       return Object.assign({}, state, {
@@ -326,10 +226,6 @@ const Reducer = (state = { state: Constants.STATE_INIT}, action = { type: "NULL"
       return Object.assign({}, state, {
         state: Constants.STATE_AUTH_FAILED,
         error: state.error
-      });
-    case Actions.READY :
-      return Object.assign({}, state, {
-        state: Constants.STATE_READY
       });
     default :
       return state;

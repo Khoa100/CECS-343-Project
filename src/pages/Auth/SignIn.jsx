@@ -7,9 +7,10 @@ import { Card, CardMedia, CardActions, CardActionButtons, CardAction } from 'rmw
 import { Button } from 'rmwc/Button';
 import { TextField } from 'rmwc/TextField';
 
+import If from './../../components/If';
 import { UnsecurePage } from './../../components/Page';
 
-import { Actions as AWS } from './../../scripts/aws';
+import Constants, { Actions as AWS } from './../../scripts/aws';
 
 class SignIn extends Component {
   constructor(props) {
@@ -55,6 +56,11 @@ class SignIn extends Component {
                     <div>
                       <TextField label="Password" fullwidth type="password" onChange={this.passwordChange} value={this.state['field-password']}/>
                     </div>
+                    <If c={this.props.state === Constants.STATE_AUTH_FAILED}>
+                      <div>
+                        <p class="error">Incorrect username or password</p>
+                      </div>
+                    </If>
                   </div>
                   <CardActions>
                     <CardActionButtons>
@@ -78,4 +84,10 @@ class SignIn extends Component {
   }
 }
 
-export default connect()(SignIn);
+export default connect(
+  (state) => {
+    return {
+      state: state.aws.state
+    };
+  }
+)(SignIn);

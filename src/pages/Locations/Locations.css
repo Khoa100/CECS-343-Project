@@ -1,0 +1,33 @@
+.location {
+	display: flex;
+	justify-content: center;
+	justify-self: center;
+	align-items: center;
+	width: 100%;
+	text-align: left;
+}
+
+.location-preview {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+
+.location-details {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+@media (min-width: 839px) {
+  .location-preview {
+    width: 50%;
+  }
+  
+  .location-details {
+    width: 50%;
+  }
+}

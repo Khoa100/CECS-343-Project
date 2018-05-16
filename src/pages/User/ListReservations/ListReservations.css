@@ -1,0 +1,28 @@
+.list-header {
+  
+}
+
+.list-header .left {
+  width: 33%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.list-header .center {
+  width: 33%;
+  text-align: center;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.list-header .right {
+  width: 33%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.list-container {
+  width: 750px;
+  margin: auto;
+  max-width: 90%;
+}

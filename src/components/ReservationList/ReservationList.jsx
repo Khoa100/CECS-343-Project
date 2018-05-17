@@ -23,12 +23,15 @@ class ReservationPreview extends Component {
       );
     } else if (this.props.state === Reservations.RES_READY) {
       const d = new Date(this.props.date);
-      const t = new Date(this.props.time);
+      const h = Math.floor(this.props.time / 60);
+      let m = this.props.time % 60;
+      if (m == 0) m = "00";
+      else if (m < 10) m = `0${m}`;
       return (
         <tr className="reservation-preview">
           <td>{`${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`}</td>
           <td>{this.props.location}</td>
-          <td>{`${t.getHours()}:${t.getMinutes()}`}</td>
+          <td>{`${h}:${m}`}</td>
           <td>{this.props.party}</td>
           <td><Link to={{ pathname:"/user/edit", state:{date: this.props.date}}}>edit</Link></td>
         </tr>

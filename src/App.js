@@ -21,7 +21,7 @@ Amplify.configure({
     userPoolWebClientId: "4efjjmcjfc8ee0qrlrnhl9d0r6",
     mandatorySignIn: false,
     cookieStorage: {
-      domain: ".codeanywhere.com",
+      domain: ".codeanyapp.com",
       secure: true
     }
   },

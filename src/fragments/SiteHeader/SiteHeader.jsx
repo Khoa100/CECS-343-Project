@@ -61,13 +61,13 @@ class SiteHeader extends Component {
           <Secure
             secure={
               <div className="dropdown">
-                <button className="dropbtn">Hi, Your Name</button>
+                <button className="dropbtn">Account</button>
                 <div className="dropdown-content">
-                  <Link to="/user">Account Home</Link>
-                  <Link to="/user/newres">New Reservation</Link>
-                  <Link to="/user/viewres">View Reservations</Link>
+                  <Link to="/user">Account Home</Link><br/>
+                  <Link to="/user/newres">New Reservation</Link><br/>
+                  <Link to="/user/viewres">View Reservations</Link><br/>
                   <Link to="/user/settings">Settings</Link>
-                  <Link to="/auth" onClick={this.signout} className="right">Signout</Link>
+                  <Link to="/auth" onClick={this.signout}>Signout</Link>
                 </div>
               </div>
             }
